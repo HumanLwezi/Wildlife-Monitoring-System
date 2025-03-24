@@ -74,7 +74,7 @@ def build_model(num_classes):
 
 # Train the model
 def train_model(model, X_train, y_train, X_val, y_val, epochs=10):
-    checkpoint = ModelCheckpoint('models/best_model.h5', monitor='val_accuracy', save_best_only=True, mode='max')
+    checkpoint = ModelCheckpoint('models/best_model.keras', monitor='val_accuracy', save_best_only=True, mode='max')
     model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     history = model.fit(X_train, y_train, epochs=epochs, validation_data=(X_val, y_val), callbacks=[checkpoint])
     return history
